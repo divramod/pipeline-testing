@@ -1,4 +1,2 @@
 # pipeline-testing
-- bla bla
-- hallo
-- hello
+- test pr

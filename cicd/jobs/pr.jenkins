@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('build-jenkins-operator') {
-    displayName('Build jenkins-operator')
+    displayName('Calponia PR')
 
     logRotator {
         numToKeep(10)

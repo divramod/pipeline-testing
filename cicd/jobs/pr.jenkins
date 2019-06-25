@@ -22,7 +22,7 @@ pipelineJob('build-jenkins-operator') {
                         url('https://github.com/divramod/pipeline-testing.git')
                         credentials('jenkins-operator')
                     }
-                    branches('*/master')
+                    branches('*/feat/*')
                 }
             }
             scriptPath('cicd/pipelines/pr.jenkins')

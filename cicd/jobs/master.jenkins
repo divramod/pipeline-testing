@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-pipelineJob('build-jenkins-operator') {
+pipelineJob('calponia-master') {
     displayName('Calponia Master')
 
     logRotator {

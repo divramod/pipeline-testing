@@ -25,7 +25,7 @@ pipelineJob('build-jenkins-operator') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/build.jenkins')
+            scriptPath('cicd/pipelines/master.jenkins')
         }
     }
 }

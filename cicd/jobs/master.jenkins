@@ -19,8 +19,8 @@ pipelineJob('calponia-master') {
             scm {
                 git {
                     remote {
-                        url('https://github.com/divramod/pipeline-testing.git')
-                        credentials('jenkins-operator')
+                        url('git@github.com:divramod/pipeline-testing.git')
+                        credentials('jenkins')
                     }
                     branches('*/master')
                 }

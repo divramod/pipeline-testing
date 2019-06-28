@@ -19,6 +19,7 @@ podTemplate(label: label,
 
     node(label) {
         dir(workdir) {
+          stages {
             parallel {
               'init': {
                   timeout(time: 3, unit: 'MINUTES') {
@@ -54,6 +55,7 @@ podTemplate(label: label,
                     sh 'echo "yes"'
                 }
             }
+          }
         }
     }
 }

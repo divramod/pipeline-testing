@@ -26,7 +26,7 @@ podTemplate(label: label,
         container('go') {
             sh 'echo 2'
         }
-      }
+      },
       "go1": {
         timeout(time: 3, unit: 'MINUTES') {
             checkout scm

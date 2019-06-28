@@ -21,7 +21,7 @@ podTemplate(label: label,
         dir(workdir) {
           stages {
             parallel {
-              'init': {
+              stage('Init') {
                   timeout(time: 3, unit: 'MINUTES') {
                       checkout scm
                   }
@@ -30,18 +30,17 @@ podTemplate(label: label,
                   }
               }
 
-              'dep1': {
+              stage('Dep') {
                   container('go1') {
                       sh 'echo "hello"'
                   }
               }
 
-              'dep2': {
+              stage('Dep 2') {
                   container('go2') {
                       sh 'echo "hello"'
                   }
               }
-
             }
 
             stage('Test') {

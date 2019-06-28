@@ -31,9 +31,6 @@ podTemplate(label: label,
           }
         },
         "go1": {
-          timeout(time: 3, unit: 'MINUTES') {
-              checkout scm
-          }
           container('go1') {
               sh 'echo go1'
               sh 'pwd'

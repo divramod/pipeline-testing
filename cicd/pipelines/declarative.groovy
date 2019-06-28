@@ -26,6 +26,28 @@ pipeline {
         }
       }
     }
+    stage('build images') {
+      parallel {
+        stage('kaniko build 1') {
+          steps {
+            container('kaniko') {
+              sh "echo $SOME_ENV_VAR"
+              sh "pwd"
+              sh "ls -lisa"
+            }
+          }
+        }
+        stage('kaniko build 2') {
+          steps {
+            container('kaniko') {
+              sh "echo $SOME_ENV_VAR"
+              sh "pwd"
+              sh "ls -lisa"
+            }
+          }
+        }
+      }
+    }
     stage('busybox') {
       parallel {
         stage('busybox stage 1') {

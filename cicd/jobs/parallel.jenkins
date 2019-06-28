@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-pipelineJob('calponia-kaniko') {
-    displayName('Calponia Kaniko')
+pipelineJob('calponia-parallel') {
+    displayName('Calponia Parallel')
 
     logRotator {
         numToKeep(10)

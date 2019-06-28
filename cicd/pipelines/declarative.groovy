@@ -23,7 +23,7 @@ pipeline {
         }
       }
     }
-    parallel (
+    parallel {
       stage('busybox') {
         steps {
           container('busybox') {
@@ -31,6 +31,6 @@ pipeline {
           }
         }
       }
-    )
+    }
   }
 }

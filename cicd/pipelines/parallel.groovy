@@ -19,16 +19,21 @@ podTemplate(label: label,
 ) {
   node(label) {
     dir(workdir) {
+      stage('Checkout') {
+        timeout(time: 3, unit: 'MINUTES') {
+            checkout scm
+        }
+        container('go') {
+            sh 'touch hello.txt'
+        }
+      }
       parallel (
         "go": {
-          timeout(time: 3, unit: 'MINUTES') {
-              checkout scm
-          }
           container('go') {
               sh 'ls'
               sh 'echo go'
               sh 'pwd'
-              sh 'touch hello.txt'
+              sh 'touch hello1.txt'
           }
         },
         "go1": {

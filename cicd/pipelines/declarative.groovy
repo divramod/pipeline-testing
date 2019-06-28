@@ -14,20 +14,19 @@ pipeline {
   }
 
   stages {
-    stage('Run maven') {
+    stage('maven') {
       steps {
-        step('1') {
-          container('maven') {
-            sh 'mvn -version'
-            sh "echo Workspace dir is ${pwd()}"
-            sh "echo $SOME_ENV_VAR"
-          }
+        container('maven') {
+          sh 'mvn -version'
+          sh "echo Workspace dir is ${pwd()}"
+          sh "echo $SOME_ENV_VAR"
         }
-        step('2') {
-          container('busybox') {
-            sh "echo Workspace dir is ${pwd()}"
-            sh "echo $SOME_ENV_VAR"
-          }
+      }
+    }
+    stage('busybox') {
+      steps {
+        container('busybox') {
+          sh "echo $SOME_ENV_VAR"
         }
       }
     }

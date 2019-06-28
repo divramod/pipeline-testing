@@ -14,17 +14,21 @@ podTemplate(label: label,
                 containerTemplate(name: 'go3', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
         ],
         envVars: [
-                envVar(key: 'GOPATH', value: workspace),
+          envVar(key: 'GOPATH', value: workspace),
+          envVar(key: 'DIVRAMOD', value: 'is cool'),
         ],
 ) {
   node(label) {
     dir(workdir) {
       stage('Checkout') {
-        timeout(time: 3, unit: 'MINUTES') {
-            checkout scm
-        }
-        container('go') {
-            sh 'touch hello.txt'
+        steps {
+          timeout(time: 3, unit: 'MINUTES') {
+              checkout scm
+          }
+          container('go') {
+              sh 'touch hello.txt'
+              sh 'echo $DIVRAMOD'
+          }
         }
       }
       parallel (

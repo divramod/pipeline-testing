@@ -25,6 +25,7 @@ podTemplate(label: label,
               checkout scm
           }
           container('go') {
+              sh 'ls'
               sh 'echo go'
               sh 'pwd'
               sh 'touch hello.txt'
@@ -32,6 +33,7 @@ podTemplate(label: label,
         },
         "go1": {
           container('go1') {
+              sh 'ls'
               sh 'echo go1'
               sh 'pwd'
           }
@@ -39,12 +41,14 @@ podTemplate(label: label,
       )
       stage('Test') {
         container('go2') {
+            sh 'ls'
             sh 'echo go2'
             sh 'pwd'
         }
       }
       stage('Build') {
         container('go3') {
+            sh 'ls'
             sh 'echo go3'
             sh 'pwd'
         }

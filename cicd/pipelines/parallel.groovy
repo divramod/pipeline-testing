@@ -18,16 +18,16 @@ podTemplate(label: label,
         )
 {
   node(label) {
-    // parallel {
-      // "Init": {
-        // timeout(time: 3, unit: 'MINUTES') {
-            // checkout scm
-        // }
-        // container('go') {
-            // sh 'apk --no-cache --update add make git gcc libc-dev'
-        // }
-      // }
-    // }
+    parallel (
+      "Init": {
+        timeout(time: 3, unit: 'MINUTES') {
+            checkout scm
+        }
+        container('go') {
+            sh 'apk --no-cache --update add make git gcc libc-dev'
+        }
+      }
+    )
     stage('Test') {
       container('go') {
           sh 'echo "world"'

@@ -11,12 +11,12 @@ podTemplate(label: label,
                 containerTemplate(name: 'go', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
                 containerTemplate(name: 'go1', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
                 containerTemplate(name: 'go2', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
+                containerTemplate(name: 'go3', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
         ],
         envVars: [
                 envVar(key: 'GOPATH', value: workspace),
         ],
-        )
-{
+) {
   node(label) {
     dir(workdir) {
       parallel (
@@ -27,6 +27,7 @@ podTemplate(label: label,
           container('go') {
               sh 'echo go'
               sh 'pwd'
+              sh 'touch hello.txt'
           }
         },
         "go1": {
@@ -40,13 +41,15 @@ podTemplate(label: label,
         }
       )
       stage('Test') {
-        container('go') {
-            sh 'echo "world"'
+        container('go2') {
+            sh 'echo go2'
+            sh 'pwd'
         }
       }
       stage('Build') {
-        container('go') {
-            sh 'echo "yes"'
+        container('go3') {
+            sh 'echo go3'
+            sh 'pwd'
         }
       }
     }

@@ -18,32 +18,34 @@ podTemplate(label: label,
         )
 {
   node(label) {
-    parallel (
-      "go": {
-        timeout(time: 3, unit: 'MINUTES') {
-            checkout scm
+    dir(workdir) {
+      parallel (
+        "go": {
+          timeout(time: 3, unit: 'MINUTES') {
+              checkout scm
+          }
+          container('go') {
+              sh 'echo 2'
+          }
+        },
+        "go1": {
+          timeout(time: 3, unit: 'MINUTES') {
+              checkout scm
+          }
+          container('go1') {
+              sh 'echo 1'
+          }
         }
+      )
+      stage('Test') {
         container('go') {
-            sh 'echo 2'
-        }
-      },
-      "go1": {
-        timeout(time: 3, unit: 'MINUTES') {
-            checkout scm
-        }
-        container('go1') {
-            sh 'echo 1'
+            sh 'echo "world"'
         }
       }
-    )
-    stage('Test') {
-      container('go') {
-          sh 'echo "world"'
-      }
-    }
-    stage('Build') {
-      container('go') {
-          sh 'echo "yes"'
+      stage('Build') {
+        container('go') {
+            sh 'echo "yes"'
+        }
       }
     }
   }

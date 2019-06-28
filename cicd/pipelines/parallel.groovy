@@ -19,12 +19,19 @@ podTemplate(label: label,
 {
   node(label) {
     parallel (
-      "Init": {
-        timeout(time: 3, unit: 'MINUTES') {
-            checkout scm
-        }
+      "go": {
         container('go') {
-            sh 'apk --no-cache --update add make git gcc libc-dev'
+            sh 'echo 0'
+        }
+      }
+      "go1": {
+        container('go1') {
+            sh 'echo 1'
+        }
+      }
+      "go2": {
+        container('go1') {
+            sh 'echo 1'
         }
       }
     )

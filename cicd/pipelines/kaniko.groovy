@@ -51,20 +51,22 @@ spec:
       steps {
         parallel(
           a: {
-            git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
-            container(name: 'kaniko', shell: '/busybox/sh') {
-                sh '''#!/busybox/sh
-                /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
-                '''
-            }
+            echo "This is branch a"
+            // git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
+            // container(name: 'kaniko', shell: '/busybox/sh') {
+                // sh '''#!/busybox/sh
+                // /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
+                // '''
+            // }
           },
           b: {
-            git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
-            container(name: 'kaniko', shell: '/busybox/sh') {
-                sh '''#!/busybox/sh
-                /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
-                '''
-            }
+            echo "This is branch b"
+            // git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
+            // container(name: 'kaniko', shell: '/busybox/sh') {
+                // sh '''#!/busybox/sh
+                // /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
+                // '''
+            // }
           }
       }
     }

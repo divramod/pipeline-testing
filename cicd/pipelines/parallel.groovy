@@ -25,7 +25,8 @@ podTemplate(label: label,
               checkout scm
           }
           container('go') {
-              sh 'echo 2'
+              sh 'echo go'
+              sh 'pwd'
           }
         },
         "go1": {
@@ -33,7 +34,8 @@ podTemplate(label: label,
               checkout scm
           }
           container('go1') {
-              sh 'echo 1'
+              sh 'echo go1'
+              sh 'pwd'
           }
         }
       )

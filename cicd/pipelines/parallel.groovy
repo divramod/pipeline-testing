@@ -15,44 +15,38 @@ podTemplate(label: label,
         envVars: [
                 envVar(key: 'GOPATH', value: workspace),
         ],
-        ) {
-
-    node(label) {
-        dir(workdir) {
-          parallel {
-            stage('Init') {
-                timeout(time: 3, unit: 'MINUTES') {
-                    checkout scm
-                }
-                container('go') {
-                    sh 'apk --no-cache --update add make git gcc libc-dev'
-                }
-            }
-
-            stage('Dep') {
-                container('go1') {
-                    sh 'echo "hello"'
-                }
-            }
-
-            stage('Dep 2') {
-                container('go2') {
-                    sh 'echo "hello"'
-                }
-            }
-          }
-
-          stage('Test') {
-              container('go') {
-                  sh 'echo "world"'
-              }
-          }
-
-          stage('Build') {
-              container('go') {
-                  sh 'echo "yes"'
-              }
-          }
+        )
+{
+  node(label) {
+    parallel {
+      stage('Init') {
+        timeout(time: 3, unit: 'MINUTES') {
+            checkout scm
         }
+        container('go') {
+            sh 'apk --no-cache --update add make git gcc libc-dev'
+        }
+      }
+      stage('Dep') {
+        container('go1') {
+            sh 'echo "hello"'
+        }
+      }
+      stage('Dep 2') {
+        container('go2') {
+            sh 'echo "hello"'
+        }
+      }
     }
+    stage('Test') {
+      container('go') {
+          sh 'echo "world"'
+      }
+    }
+    stage('Build') {
+      container('go') {
+          sh 'echo "yes"'
+      }
+    }
+  }
 }

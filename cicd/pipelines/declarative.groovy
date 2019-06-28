@@ -4,7 +4,7 @@ pipeline {
       label 'mypod'
       customWorkspace 'some/other/path'
       defaultContainer 'maven'
-      yamlFile 'KubernetesPod.yaml'
+      yamlFile 'cicd/k8s/KubernetesPod.yaml'
     }
   }
 

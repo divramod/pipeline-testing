@@ -23,12 +23,13 @@ pipeline {
         }
       }
     }
-    parallel {
-      stage('busybox') {
-        steps {
-          container('busybox') {
-            sh "echo $SOME_ENV_VAR"
-          }
+    stage('busybox') {
+      parallel {
+        container('busybox') {
+          sh "echo $SOME_ENV_VAR"
+        }
+        container('busybox') {
+          sh "echo $SOME_ENV_VAR"
         }
       }
     }

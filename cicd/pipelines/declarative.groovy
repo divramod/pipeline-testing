@@ -25,7 +25,14 @@ pipeline {
     }
     stage('busybox') {
       parallel {
-        stage('maven') {
+        stage('busybox stage 1') {
+          steps {
+            container('busybox') {
+              sh "echo $SOME_ENV_VAR"
+            }
+          }
+        }
+        stage('busybox stage 2') {
           steps {
             container('busybox') {
               sh "echo $SOME_ENV_VAR"

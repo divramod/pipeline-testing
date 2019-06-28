@@ -20,16 +20,17 @@ podTemplate(label: label,
   node(label) {
     parallel (
       "go": {
+        timeout(time: 3, unit: 'MINUTES') {
+            checkout scm
+        }
         container('go') {
-            sh 'echo 0'
+            sh 'echo 2'
         }
       }
       "go1": {
-        container('go1') {
-            sh 'echo 1'
+        timeout(time: 3, unit: 'MINUTES') {
+            checkout scm
         }
-      }
-      "go2": {
         container('go1') {
             sh 'echo 1'
         }

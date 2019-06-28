@@ -19,7 +19,7 @@ podTemplate(label: label,
 {
   node(label) {
     parallel {
-      'Init': {
+      "Init": {
         timeout(time: 3, unit: 'MINUTES') {
             checkout scm
         }

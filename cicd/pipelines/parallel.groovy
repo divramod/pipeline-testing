@@ -9,6 +9,8 @@ podTemplate(label: label,
         containers: [
                 containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:alpine'),
                 containerTemplate(name: 'go', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
+                containerTemplate(name: 'go1', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
+                containerTemplate(name: 'go2', image: 'golang:1-alpine', command: 'cat', ttyEnabled: true),
         ],
         envVars: [
                 envVar(key: 'GOPATH', value: workspace),
@@ -28,7 +30,13 @@ podTemplate(label: label,
               }
 
               stage('Dep') {
-                  container('go') {
+                  container('go1') {
+                      sh 'echo "hello"'
+                  }
+              }
+
+              stage('Dep 2') {
+                  container('go2') {
                       sh 'echo "hello"'
                   }
               }

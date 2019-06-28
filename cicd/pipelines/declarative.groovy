@@ -1,4 +1,5 @@
 pipeline {
+
   agent {
     kubernetes {
       label 'mypod'
@@ -8,11 +9,16 @@ pipeline {
     }
   }
 
+  environment {
+    SOME_ENV_VAR = "some-label"
+  }
+
   stages {
     stage('Run maven') {
       steps {
         sh 'mvn -version'
         sh "echo Workspace dir is ${pwd()}"
+        sh "echo $SOME_ENV_VAR"
       }
     }
   }

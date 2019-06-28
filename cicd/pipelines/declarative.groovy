@@ -20,6 +20,8 @@ pipeline {
           sh 'mvn -version'
           sh "echo Workspace dir is ${pwd()}"
           sh "echo $SOME_ENV_VAR"
+          sh "pwd"
+          sh "ls -lisa"
         }
       }
     }
@@ -29,6 +31,8 @@ pipeline {
           steps {
             container('busybox') {
               sh "echo $SOME_ENV_VAR"
+              sh "pwd"
+              sh "ls -lisa"
             }
           }
         }
@@ -36,6 +40,8 @@ pipeline {
           steps {
             container('busybox') {
               sh "echo $SOME_ENV_VAR"
+              sh "pwd"
+              sh "ls -lisa"
             }
           }
         }

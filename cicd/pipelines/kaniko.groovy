@@ -36,7 +36,8 @@ spec:
     projected:
       sources:
       - secret:
-          name: regcred
+          name: harbor
+          namespace: jenkins
           items:
             - key: .dockerconfigjson
               path: .docker/config.json

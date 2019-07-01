@@ -49,25 +49,12 @@ spec:
         PATH = "/busybox:/kaniko:$PATH"
       }
       steps {
-        parallel(
-          a: {
-            echo "This is branch a"
-            // git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
-            // container(name: 'kaniko', shell: '/busybox/sh') {
-                // sh '''#!/busybox/sh
-                // /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
-                // '''
-            // }
-          },
-          b: {
-            echo "This is branch b"
-            // git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
-            // container(name: 'kaniko', shell: '/busybox/sh') {
-                // sh '''#!/busybox/sh
-                // /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
-                // '''
-            // }
-          }
+        git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
+        container(name: 'kaniko', shell: '/busybox/sh') {
+            sh '''#!/busybox/sh
+            /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=mydockerregistry:5000/myorg/myimage
+            '''
+        }
       }
     }
   }

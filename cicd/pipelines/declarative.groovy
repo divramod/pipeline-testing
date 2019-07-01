@@ -40,9 +40,6 @@ pipeline {
         stage('kaniko build 2') {
           steps {
             container('kaniko') {
-              sh "echo $SOME_ENV_VAR"
-              sh "pwd"
-              sh "ls -lisa"
             }
           }
         }

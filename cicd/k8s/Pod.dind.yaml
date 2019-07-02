@@ -25,7 +25,7 @@ spec:
     volumeMounts:
       - name: jenkins-docker-cfg
         mountPath: /root
-      - name: dind-storage
+      - name: dind-storage-2
         mountPath: /var/lib/docker
   - name: git
     image: docker.calponia-divramod.de/jenkins/devops/arch:latest
@@ -40,6 +40,8 @@ spec:
   - name: harbor-jenkins
   volumes:
   - name: dind-storage
+    emptyDir: {}
+  - name: dind-storage-2
     emptyDir: {}
   - name: jenkins-docker-cfg
     projected:

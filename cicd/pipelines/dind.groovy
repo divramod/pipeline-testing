@@ -25,8 +25,7 @@ pipeline {
     stage('dind') {
       steps {
         container('dind') {
-          echo "GIT_COMMIT_HASH=${jobBaseName}"
-          // sh "ls -lisa"
+          sh "echo ${jobBaseName}"
           // sh "ls /root"
 
 

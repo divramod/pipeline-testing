@@ -59,25 +59,25 @@ pipeline {
           }
         }
 
-        stage('service2') {
-          agent {
-            kubernetes {
-              label 'dind'
-              // customWorkspace 'some/other/path'
-              // defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Pod.dind.yaml'
-            }
-          }
-          steps {
-            // container('dindme') {
-              sh "echo ${GIT_COMMIT_HASH}"
-              dir("service2") {
-                // sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-                // sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-              }
-            // }
-          }
-        }
+        // stage('service2') {
+        //   agent {
+        //     kubernetes {
+        //       label 'dind'
+        //       // customWorkspace 'some/other/path'
+        //       // defaultContainer 'dind'
+        //       yamlFile 'cicd/k8s/Pod.dind.yaml'
+        //     }
+        //   }
+        //   steps {
+        //     // container('dindme') {
+        //       sh "echo ${GIT_COMMIT_HASH}"
+        //       dir("service2") {
+        //         // sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+        //         // sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+        //       }
+        //     // }
+        //   }
+        // }
 
       }
 

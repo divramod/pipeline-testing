@@ -6,7 +6,7 @@ pipeline {
     kubernetes {
       label 'dindpod'
       customWorkspace 'some/other/path'
-      defaultContainer 'dind'
+      // defaultContainer 'dind'
       yamlFile 'cicd/k8s/Pod.dind.yaml'
     }
   }

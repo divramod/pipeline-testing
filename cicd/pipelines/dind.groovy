@@ -11,8 +11,8 @@ pipeline {
     SOME_ENV_VAR = "some-label"
   }
   stages {
-    container('git') {
-      stage('git') {
+    stage('git') {
+      container('git') {
         steps {
           checkout scm
           jobBaseName = sh(

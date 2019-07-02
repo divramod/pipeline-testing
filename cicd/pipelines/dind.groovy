@@ -1,7 +1,4 @@
 pipeline {
-  parameters {
-    string(name: 'GIT_COMMIT_HASH', defaultValue: '')
-  }
   agent {
     kubernetes {
       label 'dindpod'
@@ -12,7 +9,6 @@ pipeline {
   }
   environment {
     SOME_ENV_VAR = "some-label"
-    GIT_COMMIT_HASH = ""
   }
   stages {
     stage('git') {

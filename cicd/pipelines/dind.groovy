@@ -16,7 +16,7 @@ pipeline {
       steps {
         checkout scm
         container('git') {
-          bash '''#!/bin/bash
+          sh '''#!/bin/bash
             ls -lisa
             GIT_COMMIT_HASH="$(git rev-parse HEAD)"
             echo "hello world"

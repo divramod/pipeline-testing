@@ -4,26 +4,20 @@ pipeline {
 
   agent {
     kubernetes {
-      label 'git'
+      label 'runner'
       customWorkspace 'some/other/path'
       // defaultContainer 'dind'
-      yamlFile 'cicd/k8s/Pod.git.yaml'
+      yamlFile 'cicd/k8s/Pod.all.yaml'
     }
+  }
+
+  environment {
+    SOME_ENV_VAR = "some-label"
   }
 
   stages {
 
     stage('git') {
-
-      // agent {
-        // kubernetes {
-          // label 'git'
-          // customWorkspace 'some/other/path'
-          // // defaultContainer 'dind'
-          // yamlFile 'cicd/k8s/Pod.git.yaml'
-        // }
-      // }
-
       steps {
         container('git') {
           checkout scm
@@ -39,44 +33,28 @@ pipeline {
       parallel {
 
         stage('service1') {
-          agent {
-            kubernetes {
-              label 'dind-1'
-              // customWorkspace 'some/other/path'
-              yamlFile 'cicd/k8s/Pod.dind.yaml'
-            }
-          }
           steps {
-            // container('dind1') {
+            container('dind1') {
               sh "echo ${GIT_COMMIT_HASH}"
-              sh "ls -lisa"
               dir("service1") {
                 sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
                 sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
               }
-            // }
+            }
           }
         }
 
-        // stage('service2') {
-        //   agent {
-        //     kubernetes {
-        //       label 'dind'
-        //       // customWorkspace 'some/other/path'
-        //       // defaultContainer 'dind'
-        //       yamlFile 'cicd/k8s/Pod.dind.yaml'
-        //     }
-        //   }
-        //   steps {
-        //     // container('dindme') {
-        //       sh "echo ${GIT_COMMIT_HASH}"
-        //       dir("service2") {
-        //         // sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-        //         // sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-        //       }
-        //     // }
-        //   }
-        // }
+        stage('service2') {
+          steps {
+            container('dind1') {
+              sh "echo ${GIT_COMMIT_HASH}"
+              dir("service2") {
+                sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+                sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+              }
+            }
+          }
+        }
 
       }
 

@@ -53,7 +53,8 @@ spec:
         git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
         container(name: 'kaniko', shell: '/busybox/sh') {
             sh '''#!/busybox/sh
-            /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.calponia-divramod.de/jenkins/pipeline-testing
+            // /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.calponia-divramod.de/jenkins/pipeline-testing
+            `pwd`
             '''
         }
       }

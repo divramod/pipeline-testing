@@ -16,17 +16,17 @@ spec:
         mountPath: /root
       - name: dind-storage-1
         mountPath: /var/lib/docker
-  - name: dind2
-    image: docker:dind
-    imagePullPolicy: IfNotPresent
-    tty: true
-    securityContext:
-      privileged: true
-    volumeMounts:
-      - name: jenkins-docker-cfg
-        mountPath: /root
-      - name: dind-storage-2
-        mountPath: /var/lib/docker
+  # - name: dind2
+    # image: docker:dind
+    # imagePullPolicy: IfNotPresent
+    # tty: true
+    # securityContext:
+      # privileged: true
+    # volumeMounts:
+      # - name: jenkins-docker-cfg
+        # mountPath: /root
+      # - name: dind-storage-2
+        # mountPath: /var/lib/docker
   - name: git
     image: docker.calponia-divramod.de/jenkins/devops/arch:latest
     imagePullPolicy: IfNotPresent

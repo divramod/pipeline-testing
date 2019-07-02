@@ -34,8 +34,8 @@ spec:
     volumeMounts:
       - name: jenkins-docker-cfg
         mountPath: /root
-      - name: dind-storage
-        mountPath: /var/lib/docker
+      # - name: dind-storage
+        # mountPath: /var/lib/docker
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:

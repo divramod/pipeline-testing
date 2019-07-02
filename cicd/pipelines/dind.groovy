@@ -2,18 +2,27 @@ def GIT_COMMIT_HASH = 'UNKNOWN'
 
 pipeline {
 
+  agent {
+    kubernetes {
+      label 'git'
+      customWorkspace 'some/other/path'
+      // defaultContainer 'dind'
+      yamlFile 'cicd/k8s/Pod.git.yaml'
+    }
+  }
+
   stages {
 
     stage('git') {
 
-      agent {
-        kubernetes {
-          label 'git'
-          customWorkspace 'some/other/path'
-          // defaultContainer 'dind'
-          yamlFile 'cicd/k8s/Pod.git.yaml'
-        }
-      }
+      // agent {
+        // kubernetes {
+          // label 'git'
+          // customWorkspace 'some/other/path'
+          defaultContainer 'dind'
+          // yamlFile 'cicd/k8s/Pod.git.yaml'
+        // }
+      // }
 
       steps {
         container('git') {

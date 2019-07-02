@@ -19,7 +19,7 @@ pipeline {
           sh "echo $SOME_ENV_VAR"
           sh "pwd"
           sh "ls -lisa"
-          sh "touch hello.txt"
+          sh "docker build ."
         }
       }
     }

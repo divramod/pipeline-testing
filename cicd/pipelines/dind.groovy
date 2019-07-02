@@ -52,8 +52,8 @@ pipeline {
               // sh "which docker"
               sh "ls -lisa"
               dir("service1") {
-                // sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
-                // sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+                sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+                sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
               }
             // }
           }

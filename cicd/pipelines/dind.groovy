@@ -4,7 +4,7 @@ def label = "build-jenkins-operator-${UUID.randomUUID().toString()}"
 pipeline {
   agent {
     kubernetes {
-      label "build-jenkins-operator-${UUID.randomUUID().toString()}"
+      label 'dindpod'
       customWorkspace 'some/other/path'
       defaultContainer 'dind'
       yamlFile 'cicd/k8s/Pod.dind.yaml'

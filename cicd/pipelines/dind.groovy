@@ -12,15 +12,13 @@ pipeline {
   }
   environment {
     SOME_ENV_VAR = "some-label"
+    GIT_COMMIT_HASH = ""
   }
   stages {
     stage('git') {
       steps {
         checkout scm
         container('git') {
-          sh '''#!/bin/bash
-           GIT_COMMIT_HASH=$(git rev-parse HEAD)
-          '''
           environment {
               GIT_COMMIT_HASH = sh(script: 'git rev-parse HEAD', , returnStdout: true).trim()
           }

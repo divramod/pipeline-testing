@@ -18,8 +18,8 @@ pipeline {
       steps {
         checkout scm
         container('git') {
-          env.GIT_COMMIT_HASH = sh '''#!/bin/bash
-           $(git rev-parse HEAD)
+          sh '''#!/bin/bash
+           GIT_COMMIT_HASH=$(git rev-parse HEAD)
           '''
         }
       }

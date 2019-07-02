@@ -46,7 +46,7 @@ pipeline {
 
         stage('service2') {
           steps {
-            container('dindme) {
+            container('dindme') {
               sh "echo ${GIT_COMMIT_HASH}"
               dir("service2") {
                 sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"

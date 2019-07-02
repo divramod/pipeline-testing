@@ -27,7 +27,7 @@ pipeline {
     stage('dind') {
       steps {
         container('dind') {
-          sh "echo ${env.test}"
+          sh "echo ${GIT_COMMIT_HASH}"
           // sh "ls /root"
           // sh "docker build ."
           // docker tag SOURCE_IMAGE[:TAG] docker.calponia-divramod.de/jenkins/IMAGE[:TAG]

@@ -36,6 +36,13 @@ spec:
         mountPath: /root
       # - name: dind-storage
         # mountPath: /var/lib/docker
+  - name: gitme
+    image: docker.calponia-divramod.de/jenkins/devops/arch:latest
+    imagePullPolicy: IfNotPresent
+    tty: true
+    volumeMounts:
+      - name: jenkins-docker-cfg
+        mountPath: /root
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:

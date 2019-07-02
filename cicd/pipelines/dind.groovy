@@ -30,9 +30,8 @@ pipeline {
         container('dind') {
           sh "echo Workspace dir is ${pwd()}"
           sh "echo GIT_COMMIT_HASH is $GIT_COMMIT_HASH"
-          sh "pwd"
-          sh "ls -lisa"
-          sh "ls /root"
+          // sh "ls -lisa"
+          // sh "ls /root"
           // sh "docker build ."
           // docker tag SOURCE_IMAGE[:TAG] docker.calponia-divramod.de/jenkins/IMAGE[:TAG]
           // sh "docker build ."

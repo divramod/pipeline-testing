@@ -1,9 +1,10 @@
 def GIT_COMMIT_HASH = 'UNKNOWN'
+def label = "build-jenkins-operator-${UUID.randomUUID().toString()}"
 
 pipeline {
   agent {
     kubernetes {
-      label 'dindpod'
+      label "build-jenkins-operator-${UUID.randomUUID().toString()}"
       customWorkspace 'some/other/path'
       defaultContainer 'dind'
       yamlFile 'cicd/k8s/Pod.dind.yaml'
@@ -36,16 +37,16 @@ pipeline {
             }
           }
         }
-        stage('service2') {
-          steps {
-            container('dind2') {
-              sh "echo ${GIT_COMMIT_HASH}"
-              dir("service2") {
-                sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-                sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
-              }
-            }
-          }
+        // stage('service2') {
+          // steps {
+            // container('dind2') {
+              // sh "echo ${GIT_COMMIT_HASH}"
+              // dir("service2") {
+                // sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+                // sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+              // }
+            // }
+          // }
         }
       }
     }

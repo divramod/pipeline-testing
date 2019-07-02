@@ -12,8 +12,8 @@ pipeline {
   }
   stages {
     stage('git') {
-      container('git') {
-        steps {
+      steps {
+        container('git') {
           checkout scm
           jobBaseName = sh(
             script: "git rev-parse HEAD",

@@ -41,7 +41,7 @@ pipeline {
         stage('service1') {
           agent {
             kubernetes {
-              label 'dind'
+              label 'dind-1'
               // customWorkspace 'some/other/path'
               yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
@@ -49,7 +49,6 @@ pipeline {
           steps {
             // container('dind1') {
               sh "echo ${GIT_COMMIT_HASH}"
-              // sh "which docker"
               sh "ls -lisa"
               dir("service1") {
                 sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"

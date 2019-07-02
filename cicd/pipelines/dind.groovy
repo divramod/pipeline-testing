@@ -28,7 +28,7 @@ pipeline {
         container('dind') {
           sh "echo ${GIT_COMMIT_HASH}"
           sh "docker build . -t jenkins/pipeline-testing:${GIT_COMMIT_HASH}"
-          sh "docker tag jenkins/pipeline-testing:${GIT_COMMIT_HASH} docker.calponia-divramod.de/jenkins/pipeline-testing:${GIT_COMMIT_HASH}"
+          sh "docker tag jenkins/pipeline-testing:${GIT_COMMIT_HASH} 'https://docker.calponia-divramod.de/jenkins/pipeline-testing:'${GIT_COMMIT_HASH}"
           sh "docker push docker.calponia-divramod.de/jenkins/pipeline-testing:${GIT_COMMIT_HASH}"
         }
       }

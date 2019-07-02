@@ -9,7 +9,6 @@ pipeline {
   }
   environment {
     SOME_ENV_VAR = "some-label"
-    GIT_COMMIT_HASH = ""
   }
   stages {
     stage('git') {
@@ -18,7 +17,7 @@ pipeline {
         container('git') {
           sh '''#!/bin/bash
             ls -lisa
-            GIT_COMMIT_HASH="$(git rev-parse HEAD)"
+            env.GIT_COMMIT_HASH="$(git rev-parse HEAD)"
             echo "hello world"
             echo $GIT_COMMIT_HASH
           '''
@@ -29,9 +28,12 @@ pipeline {
       steps {
         container('dind') {
           sh "echo Workspace dir is ${pwd()}"
-          sh "echo GIT_COMMIT_HASH is $GIT_COMMIT_HASH"
+          sh "echo GIT_COMMIT_HASH is ${env.GIT_COMMIT_HASH}"
           // sh "ls -lisa"
           // sh "ls /root"
+
+
+
           // sh "docker build ."
           // docker tag SOURCE_IMAGE[:TAG] docker.calponia-divramod.de/jenkins/IMAGE[:TAG]
           // sh "docker build ."

@@ -15,10 +15,6 @@ pipeline {
       steps {
         container('git') {
           checkout scm
-          jobBaseName = sh(
-            script: "git rev-parse HEAD",
-            returnStdout: true,
-          )
         }
       }
     }

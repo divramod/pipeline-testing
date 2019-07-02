@@ -5,14 +5,16 @@ pipeline {
   stages {
 
     stage('git') {
+
       agent {
         kubernetes {
           label 'git'
           customWorkspace 'some/other/path'
           // defaultContainer 'dind'
-          yamlFile 'cicd/k8s/Container.dind.yaml'
+          yamlFile 'cicd/k8s/Pod.git.yaml'
         }
       }
+
       steps {
         container('git') {
           checkout scm

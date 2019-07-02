@@ -14,7 +14,7 @@ spec:
     volumeMounts:
       - name: jenkins-docker-cfg
         mountPath: /root
-      - name: dind-storage
+      - name: dind-storage-1
         mountPath: /var/lib/docker
   - name: dind2
     image: docker:dind
@@ -39,10 +39,14 @@ spec:
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:
-  - name: dind-storage
-    emptyDir: {}
+  - name: dind-storage-1
+    hostPath:
+      path: /tmp/1
+      type: DirectoryOrCreate
   - name: dind-storage-2
-    emptyDir: {}
+    hostPath:
+      path: /tmp/2
+      type: DirectoryOrCreate
   - name: jenkins-docker-cfg
     projected:
       sources:

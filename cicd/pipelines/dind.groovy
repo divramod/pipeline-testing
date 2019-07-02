@@ -19,17 +19,17 @@ pipeline {
       steps {
         checkout scm
         container('git') {
-          environment {
-              GIT_COMMIT_HASH = sh(script: 'git rev-parse HEAD', , returnStdout: true).trim()
-          }
+          jobBaseName = sh(
+            script: "git rev-parse HEAD",
+            returnStdout: true,
+          )
         }
       }
     }
     stage('dind') {
       steps {
         container('dind') {
-          sh "echo Workspace dir is ${pwd()}"
-          echo "GIT_COMMIT_HASH=${GIT_COMMIT_HASH}"
+          echo "GIT_COMMIT_HASH=${jobBaseName}"
           // sh "ls -lisa"
           // sh "ls /root"
 

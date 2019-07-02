@@ -11,8 +11,9 @@ pipeline {
     SOME_ENV_VAR = "some-label"
   }
   stages {
-    stage('maven') {
+    stage('dind') {
       steps {
+        checkout scm
         container('dind') {
           sh "echo Workspace dir is ${pwd()}"
           sh "echo $SOME_ENV_VAR"

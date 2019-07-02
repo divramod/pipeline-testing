@@ -19,7 +19,7 @@ pipeline {
         // kubernetes {
           // label 'git'
           // customWorkspace 'some/other/path'
-          defaultContainer 'dind'
+          // // defaultContainer 'dind'
           // yamlFile 'cicd/k8s/Pod.git.yaml'
         // }
       // }

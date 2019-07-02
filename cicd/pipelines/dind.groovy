@@ -27,10 +27,9 @@ pipeline {
       steps {
         container('dind') {
           sh "echo ${GIT_COMMIT_HASH}"
-          // sh "ls /root"
-          // sh "docker build ."
-          // docker tag SOURCE_IMAGE[:TAG] docker.calponia-divramod.de/jenkins/IMAGE[:TAG]
-          // sh "docker build ."
+          sh "docker build . -t 'jenkins/pipeline-testing:${GIT_COMMIT_HASH}'"
+          sh "docker tag 'jenkins/pipeline-testing:${GIT_COMMIT_HASH}' 'docker.calponia-divramod.de/jenkins/pipeline-testing:${GIT_COMMIT_HASH}'"
+          sh "docker push 'docker.calponia-divramod.de/jenkins/pipeline-testing:${GIT_COMMIT_HASH}'
         }
       }
     }

@@ -28,6 +28,9 @@ pipeline {
     stage('dind') {
       steps {
         container('dind') {
+          sh '''#!/bin/bash
+            echo $GIT_COMMIT_HASH
+          '''
           // sh "echo Workspace dir is ${pwd()}"
           // sh "echo $SOME_ENV_VAR"
           // sh "pwd"

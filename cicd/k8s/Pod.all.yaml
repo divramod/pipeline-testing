@@ -16,6 +16,17 @@ spec:
         mountPath: /root
       - name: dind-storage
         mountPath: /var/lib/docker
+  - name: dindme
+    image: docker:dind
+    imagePullPolicy: IfNotPresent
+    tty: true
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: jenkins-docker-cfg
+        mountPath: /root
+      - name: dind-storage-me
+        mountPath: /var/lib/docker
   - name: git
     image: docker.calponia-divramod.de/jenkins/devops/arch:latest
     imagePullPolicy: IfNotPresent
@@ -29,6 +40,10 @@ spec:
   - name: dind-storage
     hostPath:
       path: /tmp/1
+      type: DirectoryOrCreate
+  - name: dind-storage-me
+    hostPath:
+      path: /tmp/2
       type: DirectoryOrCreate
   - name: jenkins-docker-cfg
     projected:

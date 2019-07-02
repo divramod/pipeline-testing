@@ -49,7 +49,7 @@ pipeline {
           steps {
             // container('dind1') {
               sh "echo ${GIT_COMMIT_HASH}"
-              sh "which docker"
+              // sh "which docker"
               sh "ls -lisa"
               dir("service1") {
                 // sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"

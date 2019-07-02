@@ -5,7 +5,18 @@ metadata:
   namespace: jenkins
 spec:
   containers:
-  - name: dind
+  - name: dind1
+    image: docker:dind
+    imagePullPolicy: IfNotPresent
+    tty: true
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: jenkins-docker-cfg
+        mountPath: /root
+      - name: dind-storage
+        mountPath: /var/lib/docker
+  - name: dind2
     image: docker:dind
     imagePullPolicy: IfNotPresent
     tty: true

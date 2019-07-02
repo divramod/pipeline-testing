@@ -23,15 +23,29 @@ pipeline {
         }
       }
     }
-    stage('dind') {
-      steps {
-        container('dind') {
-          sh "echo ${GIT_COMMIT_HASH}"
-          dir("service1") {
-            sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
-            sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+    stage('build/push images') {
+      parallel {
+        stage('service1') {
+          steps {
+            container('dind1') {
+              sh "echo ${GIT_COMMIT_HASH}"
+              dir("service1") {
+                sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+                sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+              }
+            }
           }
         }
+        stage('service2') {
+          steps {
+            container('dind2') {
+              sh "echo ${GIT_COMMIT_HASH}"
+              dir("service2") {
+                sh "docker build . -t docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+                sh "docker push docker.calponia-divramod.de/jenkins/service2:${GIT_COMMIT_HASH}"
+              }
+            }
+          }
       }
     }
   }

@@ -18,9 +18,9 @@ pipeline {
       steps {
         container('git') {
           checkout scm
-          script {
-            GIT_COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD')
-          }
+        }
+        script {
+          GIT_COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD')
         }
       }
     }

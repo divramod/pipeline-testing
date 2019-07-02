@@ -7,6 +7,10 @@ metadata:
     some-label: some-label-value
 spec:
   containers:
+  - name: git
+    image: alpine:git
+    imagePullPolicy: IfNotPresent
+    tty: true
   - name: dind
     image: docker:dind
     imagePullPolicy: IfNotPresent

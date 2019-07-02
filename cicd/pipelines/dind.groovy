@@ -15,10 +15,11 @@ pipeline {
       steps {
         checkout scm
         container('dind') {
-          sh "echo Workspace dir is ${pwd()}"
-          sh "echo $SOME_ENV_VAR"
-          sh "pwd"
+          // sh "echo Workspace dir is ${pwd()}"
+          // sh "echo $SOME_ENV_VAR"
+          // sh "pwd"
           sh "ls -lisa"
+          sh "ls /root"
           sh "docker build ."
         }
       }

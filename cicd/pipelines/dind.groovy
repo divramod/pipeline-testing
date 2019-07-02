@@ -9,6 +9,7 @@ pipeline {
   }
   environment {
     SOME_ENV_VAR = "some-label"
+    test = get_git_commit_hash()
   }
   stages {
     stage('git') {
@@ -23,9 +24,6 @@ pipeline {
         container('dind') {
           sh "echo ${jobBaseName}"
           // sh "ls /root"
-
-
-
           // sh "docker build ."
           // docker tag SOURCE_IMAGE[:TAG] docker.calponia-divramod.de/jenkins/IMAGE[:TAG]
           // sh "docker build ."
@@ -33,4 +31,10 @@ pipeline {
       }
     }
   }
+}
+
+def get_git_commit_hash() {
+    container('git') {
+        return "hello"
+    }
 }

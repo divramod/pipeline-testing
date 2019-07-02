@@ -2,22 +2,17 @@ def GIT_COMMIT_HASH = 'UNKNOWN'
 
 pipeline {
 
-  agent {
-    kubernetes {
-      label 'dindpod'
-      customWorkspace 'some/other/path'
-      // defaultContainer 'dind'
-      yamlFile 'cicd/k8s/Pod.dind.yaml'
-    }
-  }
-
-  environment {
-    SOME_ENV_VAR = "some-label"
-  }
-
   stages {
 
     stage('git') {
+      agent {
+        kubernetes {
+          label 'git'
+          customWorkspace 'some/other/path'
+          // defaultContainer 'dind'
+          yamlFile 'cicd/k8s/Container.dind.yaml'
+        }
+      }
       steps {
         container('git') {
           checkout scm
@@ -35,10 +30,10 @@ pipeline {
         stage('service1') {
           agent {
             kubernetes {
-              label 'dind-1'
+              label 'dind1'
               customWorkspace 'some/other/path'
               // defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Container.dind.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {
@@ -55,10 +50,10 @@ pipeline {
         stage('service2') {
           agent {
             kubernetes {
-              label 'dind-2'
+              label 'dind2'
               customWorkspace 'some/other/path'
               // defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Container.dind.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {

@@ -1,28 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dind
+  name: git
   namespace: jenkins
 spec:
   containers:
-  - name: dind
-    image: docker:dind
+  - name: git
+    image: docker.calponia-divramod.de/jenkins/devops/arch:latest
     imagePullPolicy: IfNotPresent
     tty: true
-    securityContext:
-      privileged: true
     volumeMounts:
       - name: jenkins-docker-cfg
         mountPath: /root
-      - name: dind-storage
-        mountPath: /var/lib/docker
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:
-  - name: dind-storage
-    hostPath:
-      path: /tmp/1
-      type: DirectoryOrCreate
   - name: jenkins-docker-cfg
     projected:
       sources:

@@ -12,12 +12,16 @@ pipeline {
     GIT_COMMIT_HASH = ""
   }
   stages {
-    stage('dind') {
+    stage('git') {
       steps {
         checkout scm
         container('git') {
           sh "GIT_COMMIT_HASH=$(git rev-parse HEAD)"
         }
+      }
+    }
+    stage('dind') {
+      steps {
         container('dind') {
           // sh "echo Workspace dir is ${pwd()}"
           // sh "echo $SOME_ENV_VAR"

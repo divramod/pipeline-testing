@@ -35,6 +35,6 @@ pipeline {
 
 def get_git_commit_hash() {
     container('git') {
-        return "echo world"
+        return "git rev-parse HEAD"
     }
 }

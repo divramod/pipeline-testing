@@ -1,4 +1,7 @@
 pipeline {
+  parameters {
+    string(name: 'GIT_COMMIT_HASH', defaultValue: '')
+  }
   agent {
     kubernetes {
       label 'dindpod'
@@ -15,11 +18,8 @@ pipeline {
       steps {
         checkout scm
         container('git') {
-          sh '''#!/bin/bash
-            ls -lisa
-            env.GIT_COMMIT_HASH="$(git rev-parse HEAD)"
-            echo "hello world"
-            echo $GIT_COMMIT_HASH
+          env.GIT_COMMIT_HASH = sh '''#!/bin/bash
+           $(git rev-parse HEAD)
           '''
         }
       }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         container('dind') {
           sh "echo Workspace dir is ${pwd()}"
-          sh "echo GIT_COMMIT_HASH is ${env.GIT_COMMIT_HASH}"
+          echo "${GIT_COMMIT_HASH}"
           // sh "ls -lisa"
           // sh "ls /root"
 

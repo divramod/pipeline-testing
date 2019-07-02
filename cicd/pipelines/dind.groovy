@@ -11,14 +11,15 @@ pipeline {
   }
   environment {
     SOME_ENV_VAR = "some-label"
-    test = get_git_commit_hash()
   }
   stages {
     stage('git') {
       steps {
-        checkout scm
-        script {
-          GIT_COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD')
+        container('dind') {
+          checkout scm
+          script {
+            GIT_COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD')
+          }
         }
       }
     }

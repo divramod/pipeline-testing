@@ -11,10 +11,10 @@ pipeline {
     SOME_ENV_VAR = "some-label"
   }
   stages {
-    stage('git') {
-      steps {
-        checkout scm
-        container('git') {
+    container('git') {
+      stage('git') {
+        steps {
+          checkout scm
           jobBaseName = sh(
             script: "git rev-parse HEAD",
             returnStdout: true,

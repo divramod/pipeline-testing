@@ -1,3 +1,5 @@
+def GIT_COMMIT_HASH = 'UNKNOWN'
+
 pipeline {
   agent {
     kubernetes {
@@ -16,6 +18,9 @@ pipeline {
       steps {
         container('git') {
           checkout scm
+          script {
+            GIT_COMMIT_HASH = sh(returnStdout: true, script: 'git rev-parse HEAD')
+          }
         }
       }
     }
@@ -33,8 +38,3 @@ pipeline {
   }
 }
 
-def get_git_commit_hash() {
-    container('git') {
-        return "$(git rev-parse HEAD)"
-    }
-}

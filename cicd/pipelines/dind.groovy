@@ -35,6 +35,6 @@ pipeline {
 
 def get_git_commit_hash() {
     container('git') {
-        return sh "echo world"
+        return "echo world"
     }
 }

@@ -20,9 +20,7 @@ spec:
   - name: harbor-jenkins
   volumes:
   - name: dind-storage
-    hostPath:
-      path: /tmp/1
-      type: DirectoryOrCreate
+    emptyDir: {}
   - name: jenkins-docker-cfg
     projected:
       sources:

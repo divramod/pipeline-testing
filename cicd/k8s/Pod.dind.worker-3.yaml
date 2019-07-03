@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dind
+  namespace: jenkins
+spec:
+  containers:
+  - name: dind
+    image: docker:dind
+    imagePullPolicy: IfNotPresent
+    tty: true
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: jenkins-docker-cfg
+        mountPath: /root
+      - name: dind-storage
+        mountPath: /var/lib/docker
+  nodeSelector:
+    kubernetes.io/hostname: worker-3
+  imagePullSecrets:
+  - name: harbor-jenkins
+  volumes:
+  - name: dind-storage
+    hostPath:
+      path: /tmp/1
+      type: DirectoryOrCreate
+  - name: jenkins-docker-cfg
+    projected:
+      sources:
+      - secret:
+          name: harbor-jenkins
+          items:
+            - key: .dockerconfigjson
+              path: .docker/config.json

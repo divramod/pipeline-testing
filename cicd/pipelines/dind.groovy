@@ -38,7 +38,7 @@ pipeline {
               label 'runner-dind-1'
               customWorkspace 'some/other/path'
               defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Pod.dind.worker-1.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {
@@ -56,7 +56,7 @@ pipeline {
               label 'runner-dind-2'
               customWorkspace 'some/other/path'
               defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Pod.dind.worker-2.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {
@@ -74,7 +74,7 @@ pipeline {
               label 'runner-dind-3'
               customWorkspace 'some/other/path'
               defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Pod.dind.worker-3.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {
@@ -92,7 +92,7 @@ pipeline {
               label 'runner-dind-4'
               customWorkspace 'some/other/path'
               defaultContainer 'dind'
-              yamlFile 'cicd/k8s/Pod.dind.worker-4.yaml'
+              yamlFile 'cicd/k8s/Pod.dind.yaml'
             }
           }
           steps {

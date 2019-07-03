@@ -25,7 +25,7 @@ pipelineJob('calponia-master') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/master.jenkins')
+            scriptPath('cicd/pipelines/master.groovy')
         }
     }
 }

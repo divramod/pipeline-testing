@@ -25,7 +25,7 @@ pipelineJob('calponia-pr') {
                     branches('*/feat/*')
                 }
             }
-            scriptPath('cicd/pipelines/pr.jenkins')
+            scriptPath('cicd/pipelines/pr.groovy')
         }
     }
 }

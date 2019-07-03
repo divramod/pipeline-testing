@@ -33,13 +33,19 @@ pipeline {
       parallel {
 
         stage('service1') {
+          agent {
+            kubernetes {
+              label 'runner1'
+              customWorkspace 'some/other/path'
+              defaultContainer 'dind'
+              yamlFile 'cicd/k8s/Pod.dind.worker-1.yaml'
+            }
+          }
           steps {
-            container('dind') {
-              sh "echo ${GIT_COMMIT_HASH}"
-              dir("service1") {
-                sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
-                sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
-              }
+            sh "echo ${GIT_COMMIT_HASH}"
+            dir("service1") {
+              sh "docker build . -t docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
+              sh "docker push docker.calponia-divramod.de/jenkins/service1:${GIT_COMMIT_HASH}"
             }
           }
         }

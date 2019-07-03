@@ -16,6 +16,8 @@ spec:
         mountPath: /root
       - name: dind-storage
         mountPath: /var/lib/docker
+  nodeSelector:
+    kubernetes.io/hostname: worker-1
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:

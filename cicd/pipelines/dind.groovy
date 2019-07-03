@@ -7,7 +7,7 @@ pipeline {
       label 'runner'
       customWorkspace 'some/other/path'
       // defaultContainer 'dind'
-      yamlFile 'cicd/k8s/Pod.all.yaml'
+      yamlFile 'cicd/k8s/Pod.git.yaml'
     }
   }
 

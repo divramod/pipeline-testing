@@ -20,7 +20,7 @@ pipelineJob('calponia-dind') {
                 git {
                     remote {
                         url('git@github.com:divramod/pipeline-testing.git')
-                        credentials('jenkins')
+                        credentials('ssh-key-jenkins-github-pipeline-testing')
                     }
                     branches('*/master')
                 }

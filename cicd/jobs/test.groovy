@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-pipelineJob('calponia-kaniko') {
-    displayName('pipeline-testing: kaniko')
+pipelineJob('calponia-declarative') {
+    displayName('pipeline-testing: test')
 
     logRotator {
         numToKeep(10)
@@ -25,7 +25,7 @@ pipelineJob('calponia-kaniko') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/kaniko.groovy')
+            scriptPath('cicd/pipelines/test.groovy')
         }
     }
 }

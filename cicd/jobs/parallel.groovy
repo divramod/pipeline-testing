@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('calponia-parallel') {
-    displayName('Calponia Parallel')
+    displayName('pipeline-testing: parallel')
 
     logRotator {
         numToKeep(10)

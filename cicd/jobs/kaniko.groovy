@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('calponia-kaniko') {
-    displayName('Calponia Kaniko')
+    displayName('pipeline-testing: kaniko')
 
     logRotator {
         numToKeep(10)

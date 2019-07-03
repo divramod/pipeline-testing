@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('calponia-dind') {
-    displayName('Dind')
+    displayName('pipeline-testing: dind')
 
     logRotator {
         numToKeep(10)

@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('calponia-pr') {
-    displayName('Calponia PR')
+    displayName('pipeline-testing: pr')
 
     logRotator {
         numToKeep(10)

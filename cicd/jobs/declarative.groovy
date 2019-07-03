@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('calponia-declarative') {
-    displayName('Calponia Declarative')
+    displayName('pipeline-testing: declarative')
 
     logRotator {
         numToKeep(10)

@@ -4,10 +4,10 @@ pipeline {
 
   agent {
     kubernetes {
-      label 'runner-git'
+      label 'runner-dind-1'
       customWorkspace 'some/other/path'
-      // defaultContainer 'dind'
-      yamlFile 'cicd/k8s/Pod.git.yaml'
+      defaultContainer 'dind'
+      yamlFile 'cicd/k8s/Pod.dind.yaml'
     }
   }
 
@@ -18,14 +18,6 @@ pipeline {
   stages {
 
     stage('service1') {
-      agent {
-        kubernetes {
-          label 'runner-dind-1'
-          customWorkspace 'some/other/path'
-          defaultContainer 'dind'
-          yamlFile 'cicd/k8s/Pod.dind.yaml'
-        }
-      }
       steps {
         sh "echo ${GIT_COMMIT}"
         dir("service1") {

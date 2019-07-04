@@ -20,9 +20,9 @@ pipeline {
     stage('service1') {
       steps {
         sh "echo ${GIT_COMMIT}"
-        sh "#!/bin/bash
-            echo hello
-        "
+        sh '''#!/bin/bash
+          echo "hello world"
+        '''
       }
     }
 

@@ -20,12 +20,9 @@ pipeline {
     stage('service1') {
       steps {
         sh "echo ${GIT_COMMIT}"
-        dir("service1") {
-          sh "docker build . -t docker.calponia-divramod.de/pipeline-testing/service1:${GIT_COMMIT}"
-          sh "docker tag docker.calponia-divramod.de/pipeline-testing/service1:${GIT_COMMIT} docker.calponia-divramod.de/pipeline-testing/service1:latest"
-          sh "docker push docker.calponia-divramod.de/pipeline-testing/service1:${GIT_COMMIT}"
-          sh "docker push docker.calponia-divramod.de/pipeline-testing/service1:latest"
-        }
+        sh "#!/bin/bash
+            echo hello
+        "
       }
     }
 

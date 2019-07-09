@@ -1,3 +1,2 @@
 # pipeline-testing
-abc
 adsf

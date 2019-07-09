@@ -4,7 +4,7 @@ pipeline {
 
   agent {
     kubernetes {
-      label 'runner-dind-1'
+      label 'pipeline-testing-runner-dind-1'
       customWorkspace 'some/other/path'
       defaultContainer 'dind'
       yamlFile 'cicd/k8s/Pod.dind.yaml'

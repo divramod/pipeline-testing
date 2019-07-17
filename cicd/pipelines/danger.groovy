@@ -20,6 +20,9 @@ pipeline {
         // DEBUG: print env
         sh 'env'
 
+        // YARN INSTALL
+        sh 'yarn install'
+
         // RUN DANGER
         sh 'yarn danger pr https://github.com/divramod/pipeline-testing/pull/96'
 

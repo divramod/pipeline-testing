@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-pipelineJob('pipeline-testing-code-review') {
-    displayName('pipeline-testing: code-review')
+pipelineJob('pipeline-testing-danger') {
+    displayName('pipeline-testing: danger')
 
     logRotator {
         numToKeep(10)
@@ -25,7 +25,7 @@ pipelineJob('pipeline-testing-code-review') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/code-review.groovy')
+            scriptPath('cicd/pipelines/danger.groovy')
         }
     }
 }

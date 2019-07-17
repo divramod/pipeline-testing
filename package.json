@@ -1,0 +1,24 @@
+{
+  "name": "pipeline-testing",
+  "version": "1.0.0",
+  "description": "[#](#) pipeline-testing adsf bcd efg dvd ads af asf asd as sfa asf asd asdf asdf",
+  "main": "dangerfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules dangerfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divramod/pipeline-testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divramod/pipeline-testing/issues"
+  },
+  "homepage": "https://github.com/divramod/pipeline-testing#readme",
+  "devDependencies": {
+    "danger": "^9.1.0",
+    "typescript": "^3.5.3"
+  }
+}

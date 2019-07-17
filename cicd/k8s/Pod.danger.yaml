@@ -15,6 +15,12 @@ spec:
       - name: jenkins-docker-cfg
         mountPath: /root/.docker
         subPath: .docker
+    env:
+    - name: DANGER_GITHUB_API_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: ssh-key-jenkins-github-pipeline-testing
+          key: deployToken
   imagePullSecrets:
   - name: harbor-jenkins
   volumes:

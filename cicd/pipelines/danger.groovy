@@ -20,6 +20,9 @@ pipeline {
         // DEBUG: print env
         sh 'env'
 
+        // RUN DANGER
+        sh 'yarn danger pr https://github.com/divramod/pipeline-testing/pull/96'
+
       }
     }
 

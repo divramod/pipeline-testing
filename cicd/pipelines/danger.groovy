@@ -8,7 +8,9 @@ pipeline {
 
     stage('Checkout') {
       // hmm
-      sh 'git checkout divramod/feat/cicd'
+      steps {
+        sh 'git checkout divramod/feat/cicd-test'
+      }
       // checkout([
         // $class: 'GitSCM',
         // branches: 'divramod/feat/cicd-test',

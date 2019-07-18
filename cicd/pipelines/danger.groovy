@@ -16,7 +16,7 @@ pipeline {
   }
 
   parameters {
-    text(name: 'BRANCH', defaultValue: 'no', description: 'Bla blup')
+    text(name: 'BRANCH', defaultValue: '', description: 'Bla blup')
   }
 
   environment {

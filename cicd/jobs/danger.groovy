@@ -11,6 +11,9 @@ pipelineJob('pipeline-testing-danger') {
       hint('PERFORMANCE_OPTIMIZED')
     }
   }
+  parameters {
+    booleanParam('FLAG', true)
+  }
   definition {
     cpsScm {
       scm {

@@ -11,4 +11,3 @@ as
 sfa
 asf
 asd
-asdf

@@ -21,8 +21,10 @@ pipeline {
           branches: [[name: '*/divramod/feat/cicd-test']],
           extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
           doGenerateSubmoduleConfigurations: false,
-          url: 'git@github.com:divramod/pipeline-testing.git',
-          credentials: 'ssh-key-jenkins-github-pipeline-testing'
+          userRemoteConfigs: [[
+            url: 'git@github.com:divramod/pipeline-testing.git',
+            credentials: 'ssh-key-jenkins-github-pipeline-testing'
+          ]],
         ])
       }
       // checkout([

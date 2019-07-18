@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-# https://jenkinsci.github.io/job-dsl-plugin
+// https://jenkinsci.github.io/job-dsl-plugin
 pipelineJob('pipeline-testing-danger') {
   displayName('[pipeline-testing] danger')
   description('New')

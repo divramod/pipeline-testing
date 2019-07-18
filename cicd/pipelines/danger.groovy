@@ -1,7 +1,14 @@
 def PATH_BASE = '/home/jenkins/cicd'
 
 pipeline {
-  agent none
+  agent {
+    kubernetes {
+      label 'runner-pipeline-testing-danger'
+      defaultContainer 'danger'
+      customWorkspace '/home/jenkins/cicd'
+      yamlFile 'cicd/k8s/Pod.danger.yaml'
+    }
+  }
   options {
     skipDefaultCheckout()
   }
@@ -12,7 +19,9 @@ pipeline {
   stages {
 
     stage('Checkout') {
+
       steps {
+
         checkout([
           $class: 'GitSCM',
           branches: [[name: '*/divramod/feat/cicd-test']],
@@ -23,18 +32,12 @@ pipeline {
             credentialsId: 'ssh-key-jenkins-github-pipeline-testing'
           ]],
         ])
+
       }
+
     }
 
     stage('code review') {
-      agent {
-        kubernetes {
-          label 'runner-pipeline-testing-danger'
-          defaultContainer 'danger'
-          customWorkspace '/home/jenkins/cicd'
-          yamlFile 'cicd/k8s/Pod.danger.yaml'
-        }
-      }
       steps {
 
         // DEBUG: print env

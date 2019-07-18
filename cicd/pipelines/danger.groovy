@@ -6,6 +6,19 @@ pipeline {
   }
   stages {
 
+    stage('Checkout') {
+      checkout([
+        $class: 'GitSCM',
+        branches: scm.branches,
+        extensions: scm.extensions + [[$class: 'LocalBranch']],
+        userRemoteConfigs: [[
+          credentialsId: 'ssh-key-jenkins-github-pipeline-testing',
+          url: 'git@github.com:divramod/pipeline-testing.git'
+        ]],
+        doGenerateSubmoduleConfigurations: false
+      ])
+    }
+
     stage('code review') {
       agent {
         kubernetes {

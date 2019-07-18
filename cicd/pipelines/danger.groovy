@@ -16,7 +16,7 @@ pipeline {
   }
 
   parameters {
-    text(name: 'MY_TEST', defaultValue: 'no', description: 'Bla blup')
+    text(name: 'BRANCH', defaultValue: 'no', description: 'Bla blup')
   }
 
   environment {
@@ -32,7 +32,7 @@ pipeline {
 
         checkout([
           $class: 'GitSCM',
-          branches: [[name: '*/divramod/feat/cicd-test']],
+          branches: [[name: "*/${params.BRANCH}" ]],
           extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
           doGenerateSubmoduleConfigurations: false,
           userRemoteConfigs: [[
@@ -47,7 +47,7 @@ pipeline {
 
     stage('code review') {
       steps {
-        echo "Hello ${params.MY_TEST}"
+        echo "Hello ${params.BRANCH}"
 
         // DEBUG: print env
         sh 'env'

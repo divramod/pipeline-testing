@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+# https://jenkinsci.github.io/job-dsl-plugin
 pipelineJob('pipeline-testing-danger') {
   displayName('[pipeline-testing] danger')
   description('New')
@@ -12,7 +13,7 @@ pipelineJob('pipeline-testing-danger') {
     }
   }
   parameters {
-    booleanParam('FLAG', true)
+    stringParam('BRANCH', '', 'The branch to run the pipeline on!')
   }
   definition {
     cpsScm {

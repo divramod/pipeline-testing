@@ -10,7 +10,7 @@ pipeline {
       agent {
         kubernetes {
           label 'runner-pipeline-testing-lint'
-          defaultContainer 'lint'
+          defaultContainer 'danger'
           customWorkspace '/home/jenkins/cicd'
           yamlFile 'cicd/k8s/Pod.danger.yaml'
         }

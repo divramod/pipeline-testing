@@ -16,10 +16,10 @@ pipeline {
         }
       }
       steps {
-        checkout([$class: 'GitSCM',
-          branches: [[name: 'divramod/feat/cicd']],
-          extensions: [[$class: 'CleanBeforeCheckout']]
-        ])
+        // checkout([$class: 'GitSCM',
+          // branches: [[name: 'divramod/feat/cicd']],
+          // extensions: [[$class: 'CleanBeforeCheckout']]
+        // ])
 
         // hmm
         sh 'git checkout divramod/feat/cicd'

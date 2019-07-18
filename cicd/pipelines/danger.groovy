@@ -12,6 +12,7 @@ pipeline {
   options {
     skipDefaultCheckout()
   }
+  parameters { text(name: 'MY_TEST', defaultValue: 'no', description: 'Bla blup') }
   environment {
     PATH = "$PATH_BASE/.bin:/home/jenkins/cicd/scripts:/home/jenkins/cicd/scripts/utils:/home/jenkins/cicd/vendors/argsh/bin:/home/jenkins/cicd/vendors/bats-core/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin"
     GIT_BRANCH = "divramod/feat/cicd-test"
@@ -39,6 +40,7 @@ pipeline {
 
     stage('code review') {
       steps {
+        echo "Hello ${params.MY_TEST}"
 
         // DEBUG: print env
         sh 'env'

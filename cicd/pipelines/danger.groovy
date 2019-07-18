@@ -11,6 +11,7 @@ pipeline {
   }
   environment {
     PATH = "$PATH_BASE/.bin:/home/jenkins/cicd/scripts:/home/jenkins/cicd/scripts/utils:/home/jenkins/cicd/vendors/argsh/bin:/home/jenkins/cicd/vendors/bats-core/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin"
+    GIT_BRANCH = "divramod/feat/cicd-test"
   }
   stages {
 
@@ -27,16 +28,6 @@ pipeline {
           ]],
         ])
       }
-      // checkout([
-        // $class: 'GitSCM',
-        // branches: 'divramod/feat/cicd-test',
-        // extensions: scm.extensions + [[$class: 'LocalBranch']],
-        // userRemoteConfigs: [[
-          // credentialsId: 'ssh-key-jenkins-github-pipeline-testing',
-          // url: 'git@github.com:divramod/pipeline-testing.git'
-        // ]],
-        // doGenerateSubmoduleConfigurations: false
-      // ])
     }
 
     stage('code review') {

@@ -22,8 +22,8 @@ pipeline {
           extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
           doGenerateSubmoduleConfigurations: false,
           userRemoteConfigs: [[
-            url: 'git@github.com:divramod/pipeline-testing.git'
-            // credentials: 'ssh-key-jenkins-github-pipeline-testing'
+            url: 'git@github.com:divramod/pipeline-testing.git',
+            credentialsId: 'ssh-key-jenkins-github-pipeline-testing'
           ]],
         ])
       }

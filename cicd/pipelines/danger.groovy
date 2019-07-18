@@ -17,6 +17,9 @@ pipeline {
       }
       steps {
 
+        // hmm
+        sh 'git checkout divramod/feat/cicd'
+
         // DEBUG: print env
         sh 'env'
 

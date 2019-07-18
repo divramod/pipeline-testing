@@ -19,7 +19,7 @@ pipelineJob('pipeline-testing-danger') {
             url('git@github.com:divramod/pipeline-testing.git')
             credentials('ssh-key-jenkins-github-pipeline-testing')
           }
-          branches('master')
+          branches('*')
         }
       }
       scriptPath('cicd/pipelines/danger.groovy')

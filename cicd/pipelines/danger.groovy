@@ -29,19 +29,7 @@ pipeline {
     stage('Checkout') {
 
       steps {
-
         git branch: "${params.BRANCH}", credentialsId: 'ssh-key-jenkins-github-pipeline-testing', url: "git@github.com:divramod/pipeline-testing.git"
-        // checkout([
-          // $class: 'GitSCM',
-          // branches: [[name: "*/${params.BRANCH}" ]],
-          // extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
-          // doGenerateSubmoduleConfigurations: false,
-          // userRemoteConfigs: [[
-            // url: 'git@github.com:divramod/pipeline-testing.git',
-            // credentialsId: 'ssh-key-jenkins-github-pipeline-testing'
-          // ]],
-        // ])
-
       }
 
     }

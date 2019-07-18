@@ -7,16 +7,18 @@ pipeline {
   stages {
 
     stage('Checkout') {
-      checkout([
-        $class: 'GitSCM',
-        branches: scm.branches,
-        extensions: scm.extensions + [[$class: 'LocalBranch']],
-        userRemoteConfigs: [[
-          credentialsId: 'ssh-key-jenkins-github-pipeline-testing',
-          url: 'git@github.com:divramod/pipeline-testing.git'
-        ]],
-        doGenerateSubmoduleConfigurations: false
-      ])
+      // hmm
+      sh 'git checkout divramod/feat/cicd'
+      // checkout([
+        // $class: 'GitSCM',
+        // branches: 'divramod/feat/cicd-test',
+        // extensions: scm.extensions + [[$class: 'LocalBranch']],
+        // userRemoteConfigs: [[
+          // credentialsId: 'ssh-key-jenkins-github-pipeline-testing',
+          // url: 'git@github.com:divramod/pipeline-testing.git'
+        // ]],
+        // doGenerateSubmoduleConfigurations: false
+      // ])
     }
 
     stage('code review') {
@@ -34,8 +36,6 @@ pipeline {
           // extensions: [[$class: 'CleanBeforeCheckout']]
         // ])
 
-        // hmm
-        sh 'git checkout divramod/feat/cicd'
 
         // DEBUG: print env
         sh 'env'

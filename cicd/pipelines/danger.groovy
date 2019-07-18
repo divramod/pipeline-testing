@@ -1,26 +1,20 @@
 def PATH_BASE = '/home/jenkins/cicd'
 pipeline {
-  // agent none
-  agent {
-    kubernetes {
-      label 'runner-pipeline-testing-danger'
-      defaultContainer 'danger'
-      customWorkspace '/home/jenkins/cicd'
-      yamlFile 'cicd/k8s/Pod.danger.yaml'
-    }
-  }
+  agent none
   environment {
     PATH = "$PATH_BASE/.bin:/home/jenkins/cicd/scripts:/home/jenkins/cicd/scripts/utils:/home/jenkins/cicd/vendors/argsh/bin:/home/jenkins/cicd/vendors/bats-core/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin"
   }
   stages {
 
     stage('Checkout') {
-      checkout([
-        $class: 'GitSCM',
-        branches: [[name: '*/divramod/feat/cicd-test']],
-        extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
-        doGenerateSubmoduleConfigurations: false
-      ])
+      steps {
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: '*/divramod/feat/cicd-test']],
+          extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
+          doGenerateSubmoduleConfigurations: false
+        ])
+      }
       // checkout([
         // $class: 'GitSCM',
         // branches: 'divramod/feat/cicd-test',
@@ -34,6 +28,14 @@ pipeline {
     }
 
     stage('code review') {
+      agent {
+        kubernetes {
+          label 'runner-pipeline-testing-danger'
+          defaultContainer 'danger'
+          customWorkspace '/home/jenkins/cicd'
+          yamlFile 'cicd/k8s/Pod.danger.yaml'
+        }
+      }
       steps {
         // checkout([$class: 'GitSCM',
           // branches: [[name: 'divramod/feat/cicd']],

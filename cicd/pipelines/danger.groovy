@@ -16,7 +16,8 @@ pipeline {
   }
 
   parameters {
-    text(name: 'BRANCH', defaultValue: '', description: 'Bla blup')
+    text(name: 'BRANCH', defaultValue: '', description: 'The branch name.')
+    text(name: 'SHA', defaultValue: '', description: 'The commit sha.')
   }
 
   environment {
@@ -37,7 +38,9 @@ pipeline {
     stage('code review') {
       steps {
 
-        echo "Hello ${params.BRANCH}"
+        echo "params.BRANCH: ${params.BRANCH}"
+
+        echo "params.SHA: ${params.SHA}"
 
         // DEBUG: print env
         sh 'env'

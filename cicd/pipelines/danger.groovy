@@ -1,4 +1,17 @@
 def PATH_BASE = '/home/jenkins/cicd'
+
+node {
+
+checkout([
+  $class: 'GitSCM',
+  branches: [[name: '*/divramod/feat/cicd-test']],
+  extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
+  doGenerateSubmoduleConfigurations: false,
+  userRemoteConfigs: [[
+    url: 'git@github.com:divramod/pipeline-testing.git',
+    credentialsId: 'ssh-key-jenkins-github-pipeline-testing'
+  ]],
+])
 pipeline {
   agent none
   environment {
@@ -46,4 +59,5 @@ pipeline {
     }
 
   }
+}
 }

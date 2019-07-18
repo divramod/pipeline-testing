@@ -27,6 +27,7 @@ pipelineJob('pipeline-testing-danger') {
         }
       }
       scriptPath('cicd/pipelines/danger.groovy')
+      lightweight(true)
     }
   }
 }

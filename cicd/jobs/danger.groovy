@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipelineJob('pipeline-testing-danger') {
   displayName('[pipeline-testing] danger')
-  description('This is the description')
+  description('New')
   logRotator {
     numToKeep(10)
     daysToKeep(30)

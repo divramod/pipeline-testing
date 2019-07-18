@@ -41,11 +41,6 @@ pipeline {
 
     stage('code review') {
       steps {
-        // checkout([$class: 'GitSCM',
-          // branches: [[name: 'divramod/feat/cicd']],
-          // extensions: [[$class: 'CleanBeforeCheckout']]
-        // ])
-
 
         // DEBUG: print env
         sh 'env'

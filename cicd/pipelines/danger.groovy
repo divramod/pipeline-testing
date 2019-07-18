@@ -15,10 +15,12 @@ pipeline {
   stages {
 
     stage('Checkout') {
-      // hmm
-      steps {
-        sh 'git checkout divramod/feat/cicd-test'
-      }
+      checkout([
+        $class: 'GitSCM',
+        branches: [[name: '*/divramod/feat/cicd-test']],
+        extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
+        doGenerateSubmoduleConfigurations: false
+      ])
       // checkout([
         // $class: 'GitSCM',
         // branches: 'divramod/feat/cicd-test',

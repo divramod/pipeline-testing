@@ -13,7 +13,7 @@ pipelineJob('pipeline-testing-danger') {
     }
   }
   parameters {
-    stringParam('BRANCH', '', 'The branch to run the pipeline on!')
+    stringParam('BRANCH', 'test', 'The branch to run the pipeline on!', '4')
   }
   definition {
     cpsScm {
@@ -27,7 +27,7 @@ pipelineJob('pipeline-testing-danger') {
         }
       }
       scriptPath('cicd/pipelines/danger.groovy')
-      lightweight(true)
+      // lightweight(true)
     }
   }
 }

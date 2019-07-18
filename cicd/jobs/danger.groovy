@@ -12,9 +12,9 @@ pipelineJob('pipeline-testing-danger') {
       hint('PERFORMANCE_OPTIMIZED')
     }
   }
-  parameters {
-    stringParam('BRANCH', 'divramode/feat/cicd', 'The branch to run the pipeline on!')
-  }
+  // parameters {
+    // stringParam('BRANCH', 'divramode/feat/cicd', 'The branch to run the pipeline on!')
+  // }
   definition {
     cpsScm {
       scm {

@@ -49,7 +49,7 @@ pipeline {
         sh 'yarn install'
 
         // RUN DANGER
-        sh 'yarn danger pr https://github.com/divramod/pipeline-testing/pull/96'
+        sh 'yarn danger pr https://github.com/calponia/calponia/pull/2063'
 
       }
     }

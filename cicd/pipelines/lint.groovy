@@ -43,7 +43,6 @@ pipeline {
 
         echo "params.SHA: ${params.SHA}"
 
-        // DEBUG: print env
         sh 'env'
 
         // RUN LINT

@@ -1,7 +1,6 @@
 def PATH_BASE = '/home/jenkins/cicd'
 
 pipeline {
-
   agent {
     kubernetes {
       label 'runner-pipeline-testing-lint'

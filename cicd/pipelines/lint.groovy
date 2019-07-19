@@ -35,7 +35,8 @@ pipeline {
 
     }
 
-    stage('code review') {
+    stage('lint') {
+
       steps {
 
         echo "params.BRANCH: ${params.BRANCH}"

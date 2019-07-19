@@ -45,8 +45,9 @@ pipeline {
 
         sh 'env'
 
-        // RUN LINT
-        sh 'yarn danger pr https://github.com/divramod/pipeline-testing/pull/96'
+        dir('alen') {
+          sh 'standard'
+        }
 
       }
     }

@@ -49,7 +49,7 @@ pipeline {
 
         sh 'standard'
 
-        dir('alen') {
+        dir('js') {
           sh 'ls -lisa'
           sh 'standard'
         }

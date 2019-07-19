@@ -46,6 +46,7 @@ pipeline {
         sh 'env'
 
         dir('alen') {
+          sh 'ls -lisa'
           sh 'standard'
         }
 

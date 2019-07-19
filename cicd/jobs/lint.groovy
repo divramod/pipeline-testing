@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipelineJob('pipeline-testing-lint') {
-    displayName('pipeline-testing: lint')
+    displayName('[pipeline-testing] lint')
 
     logRotator {
         numToKeep(10)

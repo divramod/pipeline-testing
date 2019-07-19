@@ -47,10 +47,7 @@ pipeline {
 
         sh 'ls -lisa'
 
-        dir('blup') {
-          sh 'ls -lisa'
-          sh 'standard'
-        }
+        sh 'standard'
 
         dir('alen') {
           sh 'ls -lisa'

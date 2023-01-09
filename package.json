@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/divramod/pipeline-testing#readme",
   "devDependencies": {
-    "danger": "^9.1.0",
+    "danger": "^11.2.1",
     "typescript": "^3.5.3"
   }
 }
